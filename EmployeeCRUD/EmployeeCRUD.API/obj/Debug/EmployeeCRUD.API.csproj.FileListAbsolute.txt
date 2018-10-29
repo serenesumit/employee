@@ -1,0 +1,5 @@
+D:\Live Projects\EmployeeCRUD\EmployeeCRUD.API\bin\Debug\EmployeeCRUD.API.dll
+D:\Live Projects\EmployeeCRUD\EmployeeCRUD.API\bin\Debug\EmployeeCRUD.API.pdb
+D:\Live Projects\EmployeeCRUD\EmployeeCRUD.API\obj\Debug\EmployeeCRUD.API.csproj.CoreCompileInputs.cache
+D:\Live Projects\EmployeeCRUD\EmployeeCRUD.API\obj\Debug\EmployeeCRUD.API.dll
+D:\Live Projects\EmployeeCRUD\EmployeeCRUD.API\obj\Debug\EmployeeCRUD.API.pdb
