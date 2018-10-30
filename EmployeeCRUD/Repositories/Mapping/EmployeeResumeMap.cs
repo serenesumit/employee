@@ -19,11 +19,13 @@ namespace Repositories.Mapping
 
             // Properties
             this.Property(t => t.Link).HasMaxLength(2000);
+            this.Property(t => t.Name).HasMaxLength(200);
             this.Property(t => t.EmployeeId);
 
             // Table & Column Mappings
             this.ToTable("EmployeeResumes");
             this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.Name).HasColumnName("Name");
             this.Property(t => t.Link).HasColumnName("Link");
             this.Property(t => t.EmployeeId).HasColumnName("EmployeeId");
 

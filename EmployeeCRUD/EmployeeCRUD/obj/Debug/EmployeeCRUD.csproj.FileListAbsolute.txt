@@ -242,3 +242,4 @@ D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\EntityFramework.SqlServe
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Ioc.dll.config
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\EntityFramework.SqlServer.xml
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Helpers.dll.config
+D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Swashbuckle.Core.dll

@@ -46,3 +46,4 @@ D:\Live Projects\employee\EmployeeCRUD\Repositories\obj\Debug\Repositories.cspro
 D:\Live Projects\employee\EmployeeCRUD\Repositories\obj\Debug\Repositories.csproj.CopyComplete
 D:\Live Projects\employee\EmployeeCRUD\Repositories\obj\Debug\Repositories.dll
 D:\Live Projects\employee\EmployeeCRUD\Repositories\obj\Debug\Repositories.pdb
+D:\Live Projects\employee\EmployeeCRUD\Repositories\obj\Debug\Repositories.Migrations.upateEmployeResume.resources

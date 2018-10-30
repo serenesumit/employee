@@ -23,24 +23,23 @@ namespace Services
         public virtual MethodResult<EmployeeResume> Add(EmployeeResume model)
         {
             var result = new MethodResult<EmployeeResume>();
-
-            if (!model.Id.HasValue)
-            {
-                model.Id = Guid.NewGuid();
-                model.IsDeleted = false;
-                model.CreatedDate = DateTime.UtcNow;
-                model.UpdatedDate = model.CreatedDate;
-                this._upRepository.EmployeeResumes.Add(model);
-            }
-            else
-            {
-                this._upRepository.EmployeeResumes.Attach(model);
-            }
-
+            model.IsDeleted = false;
+            model.CreatedDate = DateTime.UtcNow;
+            model.UpdatedDate = model.CreatedDate;
+            this._upRepository.EmployeeResumes.Add(model);
             this._upRepository.SaveChanges();
             result.Result = model;
             return result;
         }
 
+
+        public virtual MethodResult<EmployeeResume> Update(EmployeeResume model)
+        {
+            var result = new MethodResult<EmployeeResume>();
+            this._upRepository.EmployeeResumes.Attach(model);
+            this._upRepository.SaveChanges();
+            result.Result = model;
+            return result;
+        }
     }
 }

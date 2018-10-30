@@ -17,6 +17,7 @@ using System.Web.Http.Cors;
 namespace EmployeeCRUD.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("api/Employee")]
     public class EmployeeController : ApiController
     {
 
@@ -60,9 +61,12 @@ namespace EmployeeCRUD.Controllers
                     stream.Write(file.Buffer, 0, file.Buffer.Length);
                     try
                     {
-                        var fileResult = await this._employeeService.AddFileAsync(Constants.Azure.Containers.PageAssets, file.FileName, stream);
                         EmployeeResume employeeResume = new EmployeeResume();
+                        employeeResume.Id = Guid.NewGuid();
+                        var fileResult = await this._employeeService.AddFileAsync(Constants.Azure.Containers.PageAssets, employeeResume.Id.Value, file.FileName, stream);
+
                         employeeResume.Link = fileResult.FullPath;
+                        employeeResume.Name = fileResult.Name;
                         employeeResume.EmployeeId = employee.Id.Value;
                         this._employeeResumeService.Add(employeeResume);
 
@@ -80,5 +84,117 @@ namespace EmployeeCRUD.Controllers
             return result;
 
         }
+
+        public async Task<IEnumerable<Employee>> Get()
+        {
+            var result = await this._employeeService.GetAll();
+            List<Employee> model = new List<Employee>();
+            foreach (var employee in result)
+            {
+                Employee employeeModel = new Employee();
+                foreach (var resume in employee.EmployeeResumes)
+                {
+                    EmployeeResume employeeResume = new EmployeeResume();
+                    employeeResume.EmployeeId = resume.EmployeeId;
+                    employeeResume.Name = resume.Name;
+                    employeeResume.Link = resume.Link;
+                    employeeResume.Id = resume.Id;
+                    employeeModel.EmployeeResumes.Add(employeeResume);
+                }
+
+                employeeModel.FirstName = employee.FirstName;
+                employeeModel.LastName = employee.LastName;
+                employeeModel.Id = employee.Id;
+                model.Add(employeeModel);
+            }
+
+            return model;
+        }
+
+        [HttpGet]
+        public Employee Get(Guid id)
+        {
+            return this._employeeService.Get(id);
+        }
+
+        [HttpPut]
+        public async Task<HttpResponseMessage> PutEmployee(EmployeeModel model)
+        {
+            HttpResponseMessage result = null;
+
+            if (!model.Id.HasValue)
+            {
+                result = Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            Employee employee = this._employeeService.Get(model.Id.Value);
+            if (employee == null)
+            {
+                result = Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            employee.FirstName = model.FirstName;
+            employee.LastName = model.LastName;
+            this._employeeService.Add(employee);
+
+            if (model.Files != null && model.Files.Count > 0)
+            {
+
+                foreach (var file in model.Files)
+                {
+                    MemoryStream stream = new MemoryStream();
+                    stream.Write(file.Buffer, 0, file.Buffer.Length);
+                    try
+                    {
+                        EmployeeResume employeeResume = new EmployeeResume();
+                        employeeResume.Id = Guid.NewGuid();
+                        var fileResult = await this._employeeService.AddFileAsync(Constants.Azure.Containers.PageAssets, employeeResume.Id.Value, file.FileName, stream);
+
+                        employeeResume.Link = fileResult.FullPath;
+                        employeeResume.Name = fileResult.Name;
+                        employeeResume.EmployeeId = employee.Id.Value;
+                        this._employeeResumeService.Update(employeeResume);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.InnerException.ToString());
+                    }
+
+                }
+
+                result = Request.CreateResponse(HttpStatusCode.Created, "");
+            }
+
+            return result;
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage DeleteEmployee(Guid? id)
+        {
+            HttpResponseMessage result = null;
+            if (!id.HasValue)
+            {
+                result = Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            this._employeeService.DeleteEmployee(id.Value);
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
+        [HttpDelete]
+        [Route("{employeeId:guid}/employee-resume/{resumeId:guid}")]
+        public HttpResponseMessage DeleteEmployee(Guid? employeeId, Guid? resumeId)
+        {
+            HttpResponseMessage result = null;
+            if (!employeeId.HasValue || !resumeId.HasValue)
+            {
+                result = Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+
+            this._employeeService.DeleteEmployeeDocument(employeeId.Value, resumeId.Value);
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
     }
 }

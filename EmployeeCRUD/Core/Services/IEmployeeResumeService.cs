@@ -11,5 +11,7 @@ namespace Core.Services
     public interface IEmployeeResumeService
     {
         MethodResult<EmployeeResume> Add(EmployeeResume model);
+
+        MethodResult<EmployeeResume> Update(EmployeeResume model);
     }
 }

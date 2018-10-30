@@ -11,7 +11,11 @@ namespace Core.Services
 {
     public interface IEmployeeService
     {
-        Task<UpFile> AddFileAsync(string containerName, string filename, Stream fileStream);
+        Task<UpFile> AddFileAsync(string containerName, Guid resumeId, string filename, Stream fileStream);
         MethodResult<Employee> Add(Employee model);
+        Task<List<Employee>> GetAll();
+        Employee Get(Guid id);
+        Task<Employee> DeleteEmployee(Guid Id);
+        bool DeleteEmployeeDocument(Guid Id, Guid resumeId);
     }
 }
