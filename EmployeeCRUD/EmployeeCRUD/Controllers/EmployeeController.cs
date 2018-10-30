@@ -67,7 +67,7 @@ namespace EmployeeCRUD.Controllers
                     employeeResume.Name = fileResult.Name;
                     employeeResume.EmployeeId = employee.Id.Value;
                     this._employeeResumeService.Add(employeeResume);
-                    employee.EmployeeResumes.Add(employeeResume);
+                   
                 }
 
                 result = Request.CreateResponse(HttpStatusCode.Created, employee);
@@ -146,8 +146,22 @@ namespace EmployeeCRUD.Controllers
                     this._employeeResumeService.Add(employeeResume);
                 }
 
+                Employee employeeModel = new Employee();
+                foreach (var resume in employee.EmployeeResumes)
+                {
+                    EmployeeResume employeeResume = new EmployeeResume();
+                    employeeResume.EmployeeId = resume.EmployeeId;
+                    employeeResume.Name = resume.Name;
+                    employeeResume.Link = resume.Link;
+                    employeeResume.Id = resume.Id;
+                    employeeModel.EmployeeResumes.Add(employeeResume);
+                }
 
-                result = Request.CreateResponse(HttpStatusCode.Created, employee);
+                employeeModel.FirstName = employee.FirstName;
+                employeeModel.LastName = employee.LastName;
+                employeeModel.Id = employee.Id;
+
+                result = Request.CreateResponse(HttpStatusCode.Created, employeeModel);
             }
 
             return result;
