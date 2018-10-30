@@ -83,13 +83,20 @@ namespace Services
             var employeeResumes = this._upRepository.EmployeeResumes.Where(p => p.EmployeeId == Id).ToList();
             foreach (var resume in employeeResumes)
             {
-                var isFileDeleted = await this.DeleteFileAsync(resume.Name);
-                if (isFileDeleted)
+                try
                 {
-                    this._upRepository.EmployeeResumes.Remove(resume);
+                    var isFileDeleted = await this.DeleteFileAsync(resume.Name);
+                    if (isFileDeleted)
+                    {
+                        this._upRepository.EmployeeResumes.Remove(resume);
+                    }
                 }
+                catch (Exception ex)
+                {
 
+                }
             }
+
             var employee = this._upRepository.Employees.Where(p => p.Id == Id).FirstOrDefault();
             this._upRepository.Employees.Remove(employee);
             this._upRepository.SaveChanges();
