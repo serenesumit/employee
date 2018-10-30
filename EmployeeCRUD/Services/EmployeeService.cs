@@ -47,7 +47,13 @@ namespace Services
                 }
                 else
                 {
-                    this._upRepository.Employees.Attach(model);
+                    Employee employee = this._upRepository.Employees.Where(x => x.Id == model.Id.Value).FirstOrDefault();
+                    if (employee != null)
+                    {
+                        employee.FirstName = model.FirstName;
+                        employee.LastName = model.LastName;
+                        employee.UpdatedDate = DateTime.UtcNow;
+                    }
                 }
 
                 this._upRepository.SaveChanges();
