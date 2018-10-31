@@ -23,7 +23,7 @@ namespace Services
         private readonly IUpRepository _upRepository;
 
         private readonly IFileRepository _fileRepository;
-        string storageAccount = "DefaultEndpointsProtocol=https;AccountName=employeesstorage;AccountKey=0WdZIvukhowm7ZxWqzLYA2NN7MMlVcMRhR0u+FU792ckgU6Bj81hIGDnuh95WSj5twrZsWtTdhzzkrn/Fv3EgQ==;EndpointSuffix=core.windows.net";
+        string storageAccount = System.Configuration.ConfigurationManager.AppSettings["StorageAccount"];
         public EmployeeService(IUpRepository upRepository,
              IFileRepository fileRepository
             )
