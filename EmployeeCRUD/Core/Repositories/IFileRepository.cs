@@ -13,27 +13,15 @@
 
     public interface IFileRepository
     {
-        Task<bool> CopyFilesAsync(string sourcePath, string destinationPath);
-
-        Task<UpFile> CreateSnapshot(string path);
-
+      
         Task<bool> DeleteFileAsync(string path);
 
         Task DeleteFolderAsync(string path);
 
         Task<bool> FileExists(string path, string prefix = null);
 
-        string GetSecureDownloadLink(string filePath, string sharedAccessPolicyName);
-
-        string GetSecureDownloadLink(string filePath, SharedAccessBlobPermissions permission, int sasMinutesValid);
-
+       
         void Initialize(string connectionString, string containerName);
-
-        List<UpFile> ListFiles(string prefix);
-
-        Task<string> ReadFileAsStringAsync(string path);
-
-        Task ReadFileToStreamAsync(string path, Stream stream);
 
         Task StoreFileAsync(string path, string content);
 

@@ -15,7 +15,6 @@ namespace Repositories
     using System.Linq;
     using System.Threading.Tasks;
     using Core;
-    using Core.Helpers;
     using Core.Models;
     using Core.Repositories;
     using Microsoft.WindowsAzure.Storage;
@@ -29,7 +28,7 @@ namespace Repositories
     {
         private readonly string _devPath = "/devstoreaccount1/";
 
-        private readonly IObjectMapper _objectMapper;
+      
 
         private CloudBlobClient _client;
 
@@ -37,74 +36,6 @@ namespace Repositories
 
         private bool _isInitialized = false;
 
-        public AzureBlobStorageFileRepository(IObjectMapper objectMapper)
-        {
-            this._objectMapper = objectMapper;
-        }
-
-        public async Task<bool> CopyFilesAsync(string sourcePath, string destinationPath)
-        {
-            this.CheckIfIsInitialized();
-            var start = DateTime.UtcNow;
-            var container = this._client.GetContainerReference(this._containerName);
-            var sourceItems = container.ListBlobs(sourcePath, true, BlobListingDetails.None);
-            var blobs = new List<CloudBlockBlob>(sourceItems.Count());
-
-            foreach (var item in sourceItems)
-            {
-                var source = item as CloudBlockBlob;
-                if (source == null)
-                {
-                    continue;
-                }
-
-                var destination =
-                    container.GetBlockBlobReference(source.Name.ToString().Replace(sourcePath, destinationPath));
-                await destination.StartCopyAsync(source);
-
-                blobs.Add(destination);
-            }
-
-            // Wait a small amount of time to allow the pending operations to complete.   
-            if (blobs.Count > 0)
-            {
-                if (this.IsRunningOnDev(blobs[0].Uri))
-                {
-                    // this a bug in Azure storage emulator not updating the CopyStatus
-                    while (blobs.Count != blobs.Count(b => b.Exists() != false))
-                    {
-                        await Task.Delay(50);
-                    }
-                }
-                else
-                {
-                    while (blobs.Count != blobs.Count(b => b.CopyState.Status != CopyStatus.Pending))
-                    {
-                        await Task.Delay(50);
-                    }
-                }
-            }
-
-            var span = DateTime.UtcNow.Subtract(start);
-
-            return blobs.Any(b => b.CopyState.Status != CopyStatus.Success);
-        }
-
-        public async Task<UpFile> CreateSnapshot(string path)
-        {
-            this.CheckIfIsInitialized();
-            var container = this._client.GetContainerReference(this._containerName);
-            var blockBlob = container.GetBlockBlobReference(path);
-
-            CloudBlockBlob snapshot = await blockBlob.CreateSnapshotAsync();
-
-            var file = new UpFile()
-            {
-                Path = snapshot.SnapshotQualifiedUri.ToString(),
-                CreatedDate = snapshot.SnapshotTime.Value.UtcDateTime
-            };
-            return file;
-        }
 
         public async Task<bool> DeleteFileAsync(string path)
         {
@@ -159,36 +90,7 @@ namespace Repositories
             return blob.Results.Any();
         }
 
-        public string GetSecureDownloadLink(string filePath, string sharedAccessPolicyName)
-        {
-            this.CheckIfIsInitialized();
-            var container = this._client.GetContainerReference(this._containerName);
-            var blockBlob = container.GetBlockBlobReference(filePath);
-            string sasToken = blockBlob.GetSharedAccessSignature(null, sharedAccessPolicyName);
-            return string.Format(CultureInfo.InvariantCulture, "{0}{1}", blockBlob.Uri, sasToken);
-        }
-
-        public string GetSecureDownloadLink(
-            string filePath,
-            SharedAccessBlobPermissions permission,
-            int sasMinutesValid)
-        {
-            this.CheckIfIsInitialized();
-            var container = this._client.GetContainerReference(this._containerName);
-            var blockBlob = container.GetBlockBlobReference(filePath);
-
-            var sasToken =
-                blockBlob.GetSharedAccessSignature(
-                    new SharedAccessBlobPolicy()
-                    {
-                        Permissions = permission,
-                        SharedAccessStartTime = DateTime.UtcNow.AddMinutes(-15),
-                        SharedAccessExpiryTime = DateTime.UtcNow.AddMinutes(sasMinutesValid),
-                    });
-
-            return string.Format(CultureInfo.InvariantCulture, "{0}{1}", blockBlob.Uri, sasToken);
-        }
-
+    
 
 
         public void Initialize(string connectionString, string containerName)
@@ -208,30 +110,7 @@ namespace Repositories
             this._isInitialized = true;
         }
 
-        public List<UpFile> ListFiles(string prefix)
-        {
-            this.CheckIfIsInitialized();
-            var assets = new List<UpFile>();
-            var container = this._client.GetContainerReference(this._containerName);
-
-            var blobs = container.ListBlobs(prefix, true, BlobListingDetails.None);
-
-            foreach (var blob in blobs)
-            {
-                var uri = blob.Uri;
-
-                if (this.IsRunningOnDev(uri))
-                {
-                    var changedAbsolutePath = uri.AbsolutePath.Substring(this._devPath.Length);
-                    var url = string.Format("{0}://{1}/{2}", uri.Scheme, uri.Authority, changedAbsolutePath);
-                    uri = new Uri(url);
-                }
-
-                assets.Add(this._objectMapper.AzureBlobUriToUpFile(uri));
-            }
-
-            return assets;
-        }
+      
 
         public async Task<string> ReadFileAsStringAsync(string path)
         {

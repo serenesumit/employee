@@ -36,7 +36,6 @@ D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Ioc.dll
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Ioc.pdb
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\CommonServiceLocator.dll
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Core.dll
-D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Helpers.dll
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Repositories.dll
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Services.dll
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Unity.Abstractions.dll
@@ -48,7 +47,6 @@ D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Unity.RegistrationByConvent
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Unity.ServiceLocation.dll
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Core.pdb
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Core.dll.config
-D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Helpers.pdb
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Repositories.pdb
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Repositories.dll.config
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Services.pdb
@@ -69,6 +67,5 @@ D:\Live Projects\employee\EmployeeCRUD\Ioc\obj\Debug\Ioc.pdb
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Ioc.dll.config
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\EntityFramework.dll
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\EntityFramework.SqlServer.dll
-D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\Helpers.dll.config
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\EntityFramework.xml
 D:\Live Projects\employee\EmployeeCRUD\Ioc\bin\Debug\EntityFramework.SqlServer.xml

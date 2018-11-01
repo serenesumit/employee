@@ -1,8 +1,5 @@
-﻿using Core.Helpers;
-using Core.Repositories;
+﻿using Core.Repositories;
 using Core.Services;
-using Core.StorageEntities;
-using Helpers;
 using Repositories;
 using Services;
 using System.Collections.Generic;
@@ -66,8 +63,6 @@ namespace Ioc
         {
             container.RegisterInstance<IUnityContainer>(container);
 
-            RegisterHelpers();
-
             RegisterRepositories();
             RegisterServices();
         }
@@ -90,12 +85,7 @@ namespace Ioc
         }
 
 
-        private static void RegisterHelpers()
-        {
-            container.RegisterType<IHttpCallHelper, HttpCallHelper>();
-            container.RegisterType<IObjectMapper, ObjectMapper>();
-        }
-
+      
         private static void RegisterRepositories()
         {
             ////container.RegisterType<,>();

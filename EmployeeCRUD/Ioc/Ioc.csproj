@@ -81,10 +81,6 @@
       <Project>{75AA7A39-F55F-47CC-A364-6FE11549A62C}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Helpers\Helpers.csproj">
-      <Project>{729A1645-7584-4EEF-88F9-3A4644DFC223}</Project>
-      <Name>Helpers</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Repositories\Repositories.csproj">
       <Project>{A8617FE6-67E4-471A-ADA3-65D0FD917355}</Project>
       <Name>Repositories</Name>

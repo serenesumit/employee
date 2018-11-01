@@ -62,9 +62,6 @@
     <Compile Include="DbModels\Employee.cs" />
     <Compile Include="DbModels\EmployeeResume.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Helpers\IHttpCallHelper.cs" />
-    <Compile Include="Helpers\IObjectMapper.cs" />
-    <Compile Include="Helpers\ObjectMapper.cs" />
     <Compile Include="Models\MethodResult.cs" />
     <Compile Include="Models\UpFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,7 +70,6 @@
     <Compile Include="Repositories\IUpRepository.cs" />
     <Compile Include="Services\IEmployeeResumeService.cs" />
     <Compile Include="Services\IEmployeeService.cs" />
-    <Compile Include="StorageEntities\EmployeeEntity.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

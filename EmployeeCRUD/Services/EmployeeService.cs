@@ -3,7 +3,6 @@ using Core.DbModels;
 using Core.Models;
 using Core.Repositories;
 using Core.Services;
-using Core.StorageEntities;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;

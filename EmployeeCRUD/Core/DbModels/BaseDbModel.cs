@@ -14,24 +14,7 @@ namespace Core.DbModels
 
     public abstract class BaseDbModel
     {
-        public virtual ModelStatus ChangeStatus
-        {
-            get
-            {
-                if (this.IsDeleted)
-                {
-                    return ModelStatus.Deleted;
-                }
-
-                if (this.CreatedDate == this.UpdatedDate)
-                {
-                    return ModelStatus.New;
-                }
-
-                return ModelStatus.Updated;
-            }
-        }
-
+      
         //// public virtual int CreatedBy { get; set; }
         public virtual DateTime CreatedDate { get; set; }
 

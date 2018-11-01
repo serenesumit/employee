@@ -31,8 +31,8 @@ D:\Live Projects\employee\EmployeeCRUD\Core\bin\Debug\Microsoft.Azure.KeyVault.C
 D:\Live Projects\employee\EmployeeCRUD\Core\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
 D:\Live Projects\employee\EmployeeCRUD\Core\bin\Debug\Microsoft.WindowsAzure.Storage.xml
 D:\Live Projects\employee\EmployeeCRUD\Core\bin\Debug\Newtonsoft.Json.xml
-D:\Live Projects\employee\EmployeeCRUD\Core\obj\Debug\Core.csprojAssemblyReference.cache
 D:\Live Projects\employee\EmployeeCRUD\Core\obj\Debug\Core.csproj.CoreCompileInputs.cache
 D:\Live Projects\employee\EmployeeCRUD\Core\obj\Debug\Core.csproj.CopyComplete
 D:\Live Projects\employee\EmployeeCRUD\Core\obj\Debug\Core.dll
 D:\Live Projects\employee\EmployeeCRUD\Core\obj\Debug\Core.pdb
+D:\Live Projects\employee\EmployeeCRUD\Core\obj\Debug\Core.csprojAssemblyReference.cache

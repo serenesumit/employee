@@ -191,7 +191,6 @@ D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\WebActivatorEx.dll
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\WebGrease.dll
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Microsoft.WindowsAzure.Storage.dll
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\EntityFramework.dll
-D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Helpers.dll
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Repositories.dll
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Microsoft.Azure.KeyVault.Core.dll
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Core.pdb
@@ -229,7 +228,6 @@ D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Microsoft.CodeDom.Provid
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Microsoft.WindowsAzure.Storage.pdb
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Microsoft.WindowsAzure.Storage.xml
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\EntityFramework.xml
-D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Helpers.pdb
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Repositories.pdb
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Repositories.dll.config
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Microsoft.Azure.KeyVault.Core.xml
@@ -241,5 +239,4 @@ D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\obj\Debug\EmployeeCRUD.pdb
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\EntityFramework.SqlServer.dll
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Ioc.dll.config
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\EntityFramework.SqlServer.xml
-D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Helpers.dll.config
 D:\Live Projects\employee\EmployeeCRUD\EmployeeCRUD\bin\Swashbuckle.Core.dll
